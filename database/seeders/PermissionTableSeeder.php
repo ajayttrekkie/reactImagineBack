@@ -23,14 +23,30 @@ class PermissionTableSeeder extends Seeder
                     'guard_name' => 'api',
                 ],
                 [
+                    'name' => 'view-all|' . $module->name,
+                    'guard_name' => 'api',
+                ],
+                [
                     'name' => 'create|' . $module->name,
                     'guard_name' => 'api',
                 ],
                 [
                     'name' => 'update|' . $module->name,
                     'guard_name' => 'api',
+                ],
+                [
+                    'name' => 'delete|' . $module->name,
+                    'guard_name' => 'api',
                 ]
             ];
+            if ($module['name'] == 'Dashboard') {
+                $permissions = [
+                    [
+                        'name' => 'view|' . $module->name,
+                        'guard_name' => 'api',
+                    ],
+                ];
+            }
 
             foreach ($permissions as $key => $value) {
                 Permission::create($value);
